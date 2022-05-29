@@ -1,0 +1,64 @@
+.outerContainer {
+    width: 100%;
+}
+
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    min-height: 64px;
+    margin-bottom: 32px;
+    background-color: #2196f3;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.24);
+}
+
+.innerContainer {
+    width: 1316px;
+    margin: 0 auto;
+
+    @media (max-width: 1440px) {
+        width: 1100px;
+    }
+
+    @media (max-width: 1200px) {
+        width: 768px;
+    }
+
+    @media (max-width: 768px) {
+        width: 480px;
+    }
+
+    @media (max-width: 480px) {
+        width: 320px;
+    }
+}
+
+.listReset {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.navbarList {
+    display: flex;
+}
+
+.navbarItem {
+    display: flex;
+}
+
+.navbarLink {
+    font-family: "Roboto";
+    font-size: 14px;
+    line-height: 22px;
+    color: #fff;
+    padding: 20px 10px;
+    cursor: pointer;
+    text-decoration: none;
+    opacity: 0.7;
+}
+
+.navbarLinkActive {
+    background-color: #1e88e5;
+    opacity: 1;
+}
