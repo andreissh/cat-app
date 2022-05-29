@@ -16,7 +16,7 @@ const Header = () => {
                     <ul className={`${styles.navbarList} ${styles.listReset}`}>
                         <li className={styles.navbarItem}>
                             <Link
-                                to="/"
+                                to="/cat-app"
                                 className={`${styles.navbarLink} ${styles.navbarLinkActive}`}
                                 onClick={makeActive}
                             >
@@ -24,7 +24,7 @@ const Header = () => {
                             </Link>
                         </li>
                         <li className={styles.navbarItem}>
-                            <Link to="/favorite" className={styles.navbarLink} onClick={makeActive}>
+                            <Link to="/cat-app/favorite" className={styles.navbarLink} onClick={makeActive}>
                                 Любимые котики
                             </Link>
                         </li>

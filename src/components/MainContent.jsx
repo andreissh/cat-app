@@ -18,6 +18,10 @@ const MainContent = () => {
     const favPhotos = useSelector(getFavPhotos);
 
     useEffect(() => {
+        dispatch(fetchPhotos());
+    }, []);
+
+    useEffect(() => {
         let callback = function (entries, observer) {
             if (entries[0].isIntersecting) {
                 dispatch(fetchPhotos());
