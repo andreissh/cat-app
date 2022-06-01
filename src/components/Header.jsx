@@ -10,7 +10,7 @@ const Header = () => {
     };
 
     return (
-        <div className={`${styles.outerContainer} ${styles.header}`}>
+        <div className={styles.header}>
             <div className={styles.innerContainer}>
                 <nav className={styles.navbar}>
                     <ul className={`${styles.navbarList} ${styles.listReset}`}>

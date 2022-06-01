@@ -5,8 +5,8 @@ import { getPhotos } from "../redux/selectors/getPhotosSelector";
 import { fetchPhotos } from "../redux/asyncActions/fetchPhotos";
 import { photosAdded, photosRemoved } from "../redux/reducers/getFavPhotosReducer";
 import { getFavPhotos } from "../redux/selectors/getFavPhotosSelector";
-import heart from "../assets/images/heart.svg";
-import heartFull from "../assets/images/heartFull.svg";
+import like from "../assets/images/heart.svg";
+import likeActive from "../assets/images/heartFull.svg";
 
 const MainContent = () => {
     const lastElement = useRef();
@@ -27,33 +27,33 @@ const MainContent = () => {
         observer.current.observe(lastElement.current);
     }, []);
 
-    const toggleFav = (e, photo) => {
+    const toggleFav = (photo) => {
         if (favPhotos.length) {
-            favPhotos.filter((item) => item.id === photo.id).length
+            favPhotos.some((item) => item.id === photo.id)
                 ? dispatch(photosRemoved(photo))
                 : dispatch(photosAdded(photo));
         } else dispatch(photosAdded(photo));
     };
 
     return (
-        <div className={styles.outerContainer}>
+        <div>
             <div className={styles.innerContainer}>
                 <ul className={`${styles.picturesList} ${styles.listReset}`}>
                     {photos.map((item, i) => (
-                        <li className={styles.picturesItem} key={item.id + i} onClick={(e) => toggleFav(e, item)}>
+                        <li className={styles.picturesItem} key={item.id + i} onClick={() => toggleFav(item)}>
                             <img className={styles.img} src={item.url} width="224" height="224"></img>
                             <img
-                                src={favPhotos.filter((favItem) => favItem.id === item.id).length ? heartFull : heart}
                                 className={
-                                    favPhotos.filter((favItem) => favItem.id === item.id).length
-                                        ? `${styles.picturesHeartFull}`
-                                        : `${styles.picturesHeart}`
+                                    favPhotos.some((favItem) => favItem.id === item.id)
+                                        ? `${styles.picturesLikeActive}`
+                                        : `${styles.picturesLike}`
                                 }
+                                src={favPhotos.some((favItem) => favItem.id === item.id) ? likeActive : like}
                             ></img>
                         </li>
                     ))}
                 </ul>
-                <div ref={lastElement} className={styles.loadPhotos}>
+                <div className={styles.loadPhotos} ref={lastElement}>
                     {photos.length ? "Загружаем еще котиков..." : "Загружаем котиков..."}
                 </div>
             </div>

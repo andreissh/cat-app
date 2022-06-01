@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { photosRemoved } from "../redux/reducers/getFavPhotosReducer";
 import { getFavPhotos } from "../redux/selectors/getFavPhotosSelector";
 import styles from "../styles/FavPhotos.module.scss";
-import heartFull from "../assets/images/heartFull.svg";
+import likeActive from "../assets/images/heartFull.svg";
 
 const FavPhotos = () => {
     const favPhotos = useSelector(getFavPhotos);
@@ -15,14 +15,14 @@ const FavPhotos = () => {
     };
 
     return (
-        <div className={styles.outerContainer}>
+        <div>
             <div className={styles.innerContainer}>
                 {favPhotos.length ? (
                     <ul className={`${styles.picturesList} ${styles.listReset}`}>
                         {favPhotos.map((item) => (
                             <li className={styles.picturesItem} key={item.id} onClick={() => removeFav(item)}>
-                                <img src={item.url} className={styles.img} width="224" height="224"></img>
-                                <img src={heartFull} className={styles.picturesHeartFull}></img>
+                                <img className={styles.img} src={item.url} width="224" height="224"></img>
+                                <img className={styles.picturesLikeActive} src={likeActive}></img>
                             </li>
                         ))}
                     </ul>
