@@ -21,8 +21,8 @@ const FavPhotos = () => {
                     <ul className={`${styles.picturesList} ${styles.listReset}`}>
                         {favPhotos.map((item) => (
                             <li className={styles.picturesItem} key={item.id} onClick={() => removeFav(item)}>
-                                <img className={styles.img} src={item.url} width="224" height="224"></img>
-                                <img className={styles.picturesLikeActive} src={likeActive}></img>
+                                <img className={styles.img} src={item.url} alt="favCat"></img>
+                                <img className={styles.picturesLikeActive} src={likeActive} alt="like active"></img>
                             </li>
                         ))}
                     </ul>

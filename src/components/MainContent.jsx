@@ -18,14 +18,15 @@ const MainContent = () => {
     const favPhotos = useSelector(getFavPhotos);
 
     useEffect(() => {
-        let callback = function (entries, observer) {
+        let callback = function (entries) {
             if (entries[0].isIntersecting) {
                 dispatch(fetchPhotos());
             }
         };
+        console.log(observer);
         observer.current = new IntersectionObserver(callback);
         observer.current.observe(lastElement.current);
-    }, []);
+    }, [dispatch]);
 
     const toggleFav = (photo) => {
         if (favPhotos.length) {
@@ -41,7 +42,7 @@ const MainContent = () => {
                 <ul className={`${styles.picturesList} ${styles.listReset}`}>
                     {photos.map((item, i) => (
                         <li className={styles.picturesItem} key={item.id + i} onClick={() => toggleFav(item)}>
-                            <img className={styles.img} src={item.url} width="224" height="224"></img>
+                            <img className={styles.img} src={item.url} alt="cat"></img>
                             <img
                                 className={
                                     favPhotos.some((favItem) => favItem.id === item.id)
@@ -49,6 +50,7 @@ const MainContent = () => {
                                         : `${styles.picturesLike}`
                                 }
                                 src={favPhotos.some((favItem) => favItem.id === item.id) ? likeActive : like}
+                                alt="like"
                             ></img>
                         </li>
                     ))}
